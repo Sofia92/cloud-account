@@ -1,12 +1,8 @@
-<div class="app-root">
-  <header>
-    <app-header-root></app-header-root>
-  </header>
-  <article>
-    <div class="content">
+<nz-layout>
+  <nz-header style="background: #fff; padding:0;"><app-header-root></app-header-root></nz-header>
+  <nz-content style="margin:24px 16px 0;">
+    <div style="padding:24px; background: #fff; min-height: 360px;">
       <router-outlet></router-outlet>
     </div>
-  </article>
-</div>
-
-
+  </nz-content>
+</nz-layout>

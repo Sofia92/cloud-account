@@ -6,7 +6,8 @@
 @import "../helps/base";
 
 body {
-  font-size: $font-size-xxxl;
+  font-size: $font-size-s !important;
+  background: #ececec !important;
   margin: 0;
   padding: 0
 }
