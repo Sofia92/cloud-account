@@ -5,13 +5,13 @@
  * Description:
  */
 export interface ICategoryInterface {
-  id?: number;
+  id?: number | string;
   name?: string;
   children?: Category[];
 }
 
 export class Category implements ICategoryInterface {
-  id?: number;
+  id?: number | string;
   name?: string;
   children?: Category[];
 

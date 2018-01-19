@@ -6,42 +6,46 @@
  */
 import {Category, ICategoryInterface} from './category';
 import {IAccountInterface, Account} from './account';
-enum StateType {
-  Income = 1,
-  Payments = 2
-}
+import {Base} from './base';
 
 export interface IJournalInterface {
-  id?: number;
+  id?: number | string;
   account?: IAccountInterface;
   category?: ICategoryInterface;
   money?: number;
-  state?: StateType;
+  income?: boolean;
   comments?: string;
   costAt?: Date;
 }
 
-export class Journal implements IJournalInterface {
-  id?: number;
+export class Journal extends Base implements IJournalInterface {
   account?: Account;
   category?: Category;
   money?: number;
-  state?: StateType;
+  income?: boolean;
   comments?: string;
   costAt?: Date;
 
   static createByJSON(json: IJournalInterface = {}): Journal {
-    const {id, account, category, money, state, comments, costAt} = json;
-    return new Journal({id, account, category, money, state, comments, costAt});
+    const {id, account, category, money, income, comments, costAt} = json;
+    return new Journal({
+      id,
+      account: Account.createByJSON(account),
+      category: Category.createByJSON(category),
+      money,
+      income,
+      comments,
+      costAt
+    });
   }
 
   constructor(attr: IJournalInterface = {}) {
-    this.id = attr.id;
+    super(attr);
     this.account = attr.account;
     this.category = attr.category;
     this.money = attr.money;
-    this.state = attr.state;
+    this.income = attr.income || false;
     this.comments = attr.comments;
-    this.costAt = attr.costAt;
+    this.costAt = attr.costAt || new Date();
   }
 }

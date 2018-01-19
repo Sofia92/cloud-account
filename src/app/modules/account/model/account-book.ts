@@ -5,46 +5,60 @@
  * Description:
  */
 import {IJournalInterface, Journal} from './journal';
+import {Base} from './base';
 
 export interface IAccountBookInterface {
-  id?: number;
+  id?: number | string;
   name?: string;
   createdAt?: Date;
   updatedAt?: Date;
   description?: string;
-  journals?: IJournalInterface[];
   icon?: string;
+  parent?: any;
+  children?: Journal[];
 }
 
-export class AccountBook implements IAccountBookInterface {
-  id?: number;
-  name?: string;
+export class AccountBook extends Base implements IAccountBookInterface {
   createdAt?: Date;
   updatedAt?: Date;
   description?: string;
-  journals?: Journal[];
   icon?: string;
+  parent?: any;
+  children?: Journal[];
 
   static createByJSON(json: IAccountBookInterface = {}): AccountBook {
-    const {id, name, createdAt, updatedAt, description, journals, icon} = json;
-    return new AccountBook({
-      id,
-      name,
+    const {id, name, createdAt, updatedAt, description, children = [], icon, parent} = json;
+    const accountBook = new AccountBook({
+      id, name,
       createdAt,
       updatedAt,
       description,
-      journals: (journals || []).map(journal => Journal.createByJSON(journal)),
-      icon
+      children,
+      icon,
+      parent,
     });
+    accountBook.loadChildren(children);
+    return accountBook;
   }
 
   constructor(attr: IAccountBookInterface) {
-    this.id = attr.id;
-    this.name = attr.name;
+    super(attr);
     this.createdAt = attr.createdAt;
     this.updatedAt = attr.updatedAt;
     this.description = attr.description;
-    this.journals = attr.journals;
     this.icon = attr.icon;
+    this.parent = attr.parent;
   }
+
+  createJournal(journal: Journal) {
+    const newJournal = Journal.createByJSON(journal);
+    this.appendChild(newJournal);
+    return newJournal;
+  }
+
+  loadChildren(children = []) {
+    children.map(journal => this.createJournal(journal));
+  }
+
+
 }
