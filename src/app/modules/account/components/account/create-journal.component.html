@@ -1,0 +1,53 @@
+<nz-modal [nzWrapClassName]="'vertical-center-modal'" [nzContent]="journalForm" [nzVisible]="isVisible"
+          [nzTitle]="'新建记录'" (nzOnCancel)="cancel()" (nzOnOk)="confirm()">
+  <ng-template #journalForm>
+    <div>
+      <div nz-row>
+        <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+          <label nz-form-item-required>描述</label>
+        </div>
+        <div nz-col [nzSm]="14" [nzXs]="24">
+          <nz-input [nzSize]="'large'" [(ngModel)]="journal.comments"></nz-input>
+        </div>
+      </div>
+      <div nz-row *ngIf="journal.account">
+        <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+          <label nz-form-item-required>消费账户</label>
+        </div>
+        <div nz-col [nzSm]="14" [nzXs]="24">
+          <nz-select [nzSize]="'large'" [(ngModel)]="journal.account.id">
+            <nz-option *ngFor="let account of accounts" [nzLabel]="account.name" [nzValue]="account.id"></nz-option>
+          </nz-select>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+          <label nz-form-item-required>金额</label>
+        </div>
+        <div nz-col [nzSm]="14" [nzXs]="24">
+          <nz-input [nzSize]="'large'" [nzType]="'money'" [nzId]="'money'"
+                    [(ngModel)]="journal.money"></nz-input>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+          <label nz-form-item-required>日期</label>
+        </div>
+        <div nz-col [nzSm]="14" [nzXs]="24">
+          <nz-datepicker [nzSize]="'large'" [(ngModel)]="journal.costAt"></nz-datepicker>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+          <label nz-form-item-required>收支</label>
+        </div>
+        <div nz-col [nzSm]="14" [nzXs]="24">
+          <nz-switch [(ngModel)]="journal.income">
+            <span checked>收入</span>
+            <span unchecked>支出</span>
+          </nz-switch>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</nz-modal>
