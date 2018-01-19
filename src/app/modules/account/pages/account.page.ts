@@ -5,6 +5,7 @@
  * Description:
  */
 import {Component} from '@angular/core';
+import {AccountBook} from '../model/account-book';
 
 @Component({
   selector: 'app-account-page-root',
@@ -13,5 +14,9 @@ import {Component} from '@angular/core';
 })
 
 export class AccountPageComponent {
+  currentBook: AccountBook;
 
+  setCurrentBook(book: AccountBook) {
+    this.currentBook = book;
+  }
 }

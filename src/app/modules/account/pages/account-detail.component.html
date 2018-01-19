@@ -1,1 +1,32 @@
-ss
+<div class="container">
+  <nav>
+    <button nz-button [nzType]="'primary'" (click)="openJournalEditor()">
+      <i class="anticon anticon-plus-circle-o"></i><span>记一笔</span>
+    </button>
+  </nav>
+
+  <div class="ant-table-body">
+    <table>
+      <thead>
+      <th>名称</th>
+      <th></th>
+      <th>账户</th>
+      <th>金额</th>
+      <th>日期</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let journal of journals">
+        <td>{{journal.comments}}</td>
+        <td>{{journal.income? '收':'支'}}</td>
+        <td>{{journal.account.name}}</td>
+        <td>{{journal.money}}</td>
+        <td>{{journal.costAt| date: 'yyyy-MM-dd hh:MM:ss'}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<app-modal-create-journal [isVisible]="showJournalEditor"
+                          (closeModal)="closeJournalEditor()"
+                          (submitModal)="addJournalToBook($event)"></app-modal-create-journal>
