@@ -3,9 +3,20 @@
  * Date: 2018/8/19
  * Description:
  */
-.modal {
+:host {
   background: #00000069;
   position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .modal-content {
+    width: 300px;
+    background: #fff;
+    border-radius: 4px;
+    padding: 10px;
+  }
 }

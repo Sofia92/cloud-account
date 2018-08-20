@@ -1,53 +1,50 @@
-<div class="modal" apModal [open]="true">
-  <section class="modal-content">
+<section apModal>
+  <div>
     <div>
-      <div>
-        <label>描述</label>
-      </div>
-      <div>
-        <input [(ngModel)]="journal.comments">
-      </div>
-    </div>
-    <div *ngIf="journal.account">
-      <div>
-        <label>消费账户</label>
-      </div>
-      <div>
-        <select [(ngModel)]="journal.account.id">
-          <option *ngFor="let account of accounts" [value]="account.id">{{ account.name }}</option>
-        </select>
-      </div>
+      <label>描述</label>
     </div>
     <div>
-      <div>
-        <label>金额</label>
-      </div>
-      <div>
-        <input type="number" [(ngModel)]="journal.money">
-      </div>
+      <input [(ngModel)]="journal.comments">
+    </div>
+  </div>
+  <div *ngIf="journal.account">
+    <div>
+      <label>消费账户</label>
     </div>
     <div>
-      <div>
-        <label>日期</label>
-      </div>
-      <div>
-        <input type="date" [(ngModel)]="journal.costAt">
-      </div>
+      <select [(ngModel)]="journal.account.id">
+        <option *ngFor="let account of accounts" [value]="account.id">{{ account.name }}</option>
+      </select>
+    </div>
+  </div>
+  <div>
+    <div>
+      <label>金额</label>
     </div>
     <div>
-      <div>
-        <label>收支</label>
-      </div>
-      <div>
-        <input type="radio" value="journalIncome" [(ngModel)]="income">收入
-        <input type="radio" value="journalIncome" [(ngModel)]="out">支出
-      </div>
+      <input type="number" [(ngModel)]="journal.money">
     </div>
-    <footer>
-      <button (click)="cancel()">cancel</button>
-      <button (click)="confirm()">确认</button>
-    </footer>
-  </section>
-
-</div>
+  </div>
+  <div>
+    <div>
+      <label>日期</label>
+    </div>
+    <div>
+      <input type="date" [(ngModel)]="journal.costAt">
+    </div>
+  </div>
+  <div>
+    <div>
+      <label>收支</label>
+    </div>
+    <div>
+      <input type="radio" value="journalIncome" [(ngModel)]="income">收入
+      <input type="radio" value="journalIncome" [(ngModel)]="out">支出
+    </div>
+  </div>
+  <footer>
+    <button (click)="cancel()">cancel</button>
+    <button (click)="confirm()">确认</button>
+  </footer>
+</section>
 
