@@ -17,11 +17,13 @@ import {Journal} from '../../model/journal';
 })
 
 export class CreateJournalModalComponent implements OnInit {
-  @Input('isVisible') isVisible: boolean;
+  @Input('isOpen') isOpen: boolean;
   @Output('closeModal') closeModal = new EventEmitter();
   @Output('submitModal') submitModal = new EventEmitter();
   journal: Journal = new Journal({});
   accounts: Account[];
+  income;
+  out;
 
   constructor(private _accountService: AccountService) {
   }
@@ -39,6 +41,7 @@ export class CreateJournalModalComponent implements OnInit {
   }
 
   confirm() {
+    this.journal.income = this.income;
     this.submitModal.emit(this.journal);
   }
 

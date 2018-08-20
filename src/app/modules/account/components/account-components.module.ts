@@ -4,19 +4,18 @@
  * Version: 1.0.0
  * Description:
  */
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {NgZorroAntdModule} from 'ng-zorro-antd';
-import {CreateJournalModalComponent} from './account/create-journal.component';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreateJournalModalComponent } from './account/create-journal.component';
+import { ApolloUiModule } from '../../../../ui/ui.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    NgZorroAntdModule,
     ReactiveFormsModule,
-    NgZorroAntdModule.forRoot(),
+    ApolloUiModule,
   ],
   declarations: [
     CreateJournalModalComponent,

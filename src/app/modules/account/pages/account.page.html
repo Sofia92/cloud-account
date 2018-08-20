@@ -1,14 +1,23 @@
-<div nz-row>
-  <div nz-col [nzXs]="{ span: 8 }" [nzLg]="{ span: 4 }">
+<!--<div nz-row>-->
+<!--<div nz-col [nzXs]="{ span: 8 }" [nzLg]="{ span: 4 }">-->
+<!--<app-account-books-root (currentBookEmitter)="setCurrentBook($event)"></app-account-books-root>-->
+<!--</div>-->
+<!--<div nz-col [nzXs]="{ span: 16 }" [nzLg]="{ span: 20 }">-->
+<!--<div class="list" *ngIf="currentBook" style="display: inline-block;">-->
+<!--<app-account-detail-root [accountBook]="currentBook"></app-account-detail-root>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+
+<div>
+  <div>
     <app-account-books-root (currentBookEmitter)="setCurrentBook($event)"></app-account-books-root>
   </div>
-  <div nz-col [nzXs]="{ span: 16 }" [nzLg]="{ span: 20 }">
+  <div>
     <div class="list" *ngIf="currentBook" style="display: inline-block;">
       <app-account-detail-root [accountBook]="currentBook"></app-account-detail-root>
     </div>
   </div>
 </div>
-
-
-
 

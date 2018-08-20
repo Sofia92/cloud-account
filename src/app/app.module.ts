@@ -1,13 +1,13 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NgZorroAntdModule} from 'ng-zorro-antd';
-import {NgModule} from '@angular/core';
-import {SharedModule} from './shared/shared.module';
-import {AccountModule} from './modules/account/account.module';
-import {SummaryModule} from './modules/summary/summary.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
+import { SharedModule } from './shared/shared.module';
+import { AccountModule } from './modules/account/account.module';
+import { SummaryModule } from './modules/summary/summary.module';
 
-import {AppComponent} from './app.component';
-import {RouterModule, Routes} from '@angular/router';
+import { AppComponent } from './app.component';
+import { RouterModule, Routes } from '@angular/router';
+import { ApolloUiModule } from '../ui/ui.module';
 
 const appRoutes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'index'},
@@ -18,11 +18,11 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    NgZorroAntdModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     SharedModule,
     SummaryModule,
-    AccountModule
+    AccountModule,
+    ApolloUiModule,
   ],
   declarations: [
     AppComponent

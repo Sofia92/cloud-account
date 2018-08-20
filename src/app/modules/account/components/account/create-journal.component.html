@@ -1,53 +1,53 @@
-<nz-modal [nzWrapClassName]="'vertical-center-modal'" [nzContent]="journalForm" [nzVisible]="isVisible"
-          [nzTitle]="'新建记录'" (nzOnCancel)="cancel()" (nzOnOk)="confirm()">
-  <ng-template #journalForm>
+<div class="modal" apModal [open]="true">
+  <section class="modal-content">
     <div>
-      <div nz-row>
-        <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
-          <label nz-form-item-required>描述</label>
-        </div>
-        <div nz-col [nzSm]="14" [nzXs]="24">
-          <nz-input [nzSize]="'large'" [(ngModel)]="journal.comments"></nz-input>
-        </div>
+      <div>
+        <label>描述</label>
       </div>
-      <div nz-row *ngIf="journal.account">
-        <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
-          <label nz-form-item-required>消费账户</label>
-        </div>
-        <div nz-col [nzSm]="14" [nzXs]="24">
-          <nz-select [nzSize]="'large'" [(ngModel)]="journal.account.id">
-            <nz-option *ngFor="let account of accounts" [nzLabel]="account.name" [nzValue]="account.id"></nz-option>
-          </nz-select>
-        </div>
-      </div>
-      <div nz-row>
-        <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
-          <label nz-form-item-required>金额</label>
-        </div>
-        <div nz-col [nzSm]="14" [nzXs]="24">
-          <nz-input [nzSize]="'large'" [nzType]="'money'" [nzId]="'money'"
-                    [(ngModel)]="journal.money"></nz-input>
-        </div>
-      </div>
-      <div nz-row>
-        <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
-          <label nz-form-item-required>日期</label>
-        </div>
-        <div nz-col [nzSm]="14" [nzXs]="24">
-          <nz-datepicker [nzSize]="'large'" [(ngModel)]="journal.costAt"></nz-datepicker>
-        </div>
-      </div>
-      <div nz-row>
-        <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
-          <label nz-form-item-required>收支</label>
-        </div>
-        <div nz-col [nzSm]="14" [nzXs]="24">
-          <nz-switch [(ngModel)]="journal.income">
-            <span checked>收入</span>
-            <span unchecked>支出</span>
-          </nz-switch>
-        </div>
+      <div>
+        <input [(ngModel)]="journal.comments">
       </div>
     </div>
-  </ng-template>
-</nz-modal>
+    <div *ngIf="journal.account">
+      <div>
+        <label>消费账户</label>
+      </div>
+      <div>
+        <select [(ngModel)]="journal.account.id">
+          <option *ngFor="let account of accounts" [value]="account.id">{{ account.name }}</option>
+        </select>
+      </div>
+    </div>
+    <div>
+      <div>
+        <label>金额</label>
+      </div>
+      <div>
+        <input type="number" [(ngModel)]="journal.money">
+      </div>
+    </div>
+    <div>
+      <div>
+        <label>日期</label>
+      </div>
+      <div>
+        <input type="date" [(ngModel)]="journal.costAt">
+      </div>
+    </div>
+    <div>
+      <div>
+        <label>收支</label>
+      </div>
+      <div>
+        <input type="radio" value="journalIncome" [(ngModel)]="income">收入
+        <input type="radio" value="journalIncome" [(ngModel)]="out">支出
+      </div>
+    </div>
+    <footer>
+      <button (click)="cancel()">cancel</button>
+      <button (click)="confirm()">确认</button>
+    </footer>
+  </section>
+
+</div>
+

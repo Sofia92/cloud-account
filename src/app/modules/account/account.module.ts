@@ -7,7 +7,6 @@
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
-import {NgZorroAntdModule} from 'ng-zorro-antd';
 import {HttpClientModule} from '@angular/common/http';
 import {AccountComponentModule} from './components/account-components.module';
 import {AccountService} from './service/account.service';
@@ -26,7 +25,6 @@ const accountRoutes: Routes = [
     CommonModule,
     FormsModule,
     HttpClientModule,
-    NgZorroAntdModule.forRoot(),
     RouterModule.forChild(accountRoutes),
     AccountComponentModule
   ],

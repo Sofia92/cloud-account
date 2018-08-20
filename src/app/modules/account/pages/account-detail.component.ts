@@ -8,7 +8,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {AccountBook} from '../model/account-book';
 import {Journal} from '../model/journal';
 import {AccountService} from '../service/account.service';
-import {NzMessageService} from 'ng-zorro-antd';
 import 'rxjs/add/operator/switchMap';
 
 @Component({
@@ -22,7 +21,7 @@ export class AccountDetailComponent implements OnInit {
   showJournalEditor: boolean;
   journals: Journal[];
 
-  constructor(private _accountService: AccountService, private _message: NzMessageService) {
+  constructor(private _accountService: AccountService) {
   }
 
   ngOnInit() {
@@ -45,7 +44,7 @@ export class AccountDetailComponent implements OnInit {
     this._accountService.appendJournalToAccountBook(this.currentBook, journal).switchMap(() => {
       return this._accountService.fetchJournalsByAccountBook(this.currentBook)
     }).subscribe((journals: Journal[]) => {
-      this._message.create('success', `这是一条成功提示`);
+      //this._message.create('success', `这是一条成功提示`);
       this.journals = journals;
     })
   }
